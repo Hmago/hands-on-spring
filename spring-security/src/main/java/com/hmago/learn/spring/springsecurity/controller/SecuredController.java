@@ -14,14 +14,14 @@ import java.security.Principal;
 public class SecuredController {
 
     @GetMapping("/home-page")
-    @PreAuthorize("hasRole('ROLE_USER')")
+//    @PreAuthorize("hasRole('ROLE_USER')")
     public String userHomePage(Principal p) {
         log.info("===accessed by =={}", p.getName());
         return "Welcome";
     }
 
     @GetMapping("/admin-page")
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+//    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String adminPage(){
         log.info("==admin===");
         return "admin";

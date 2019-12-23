@@ -8,7 +8,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
+import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
+import org.springframework.security.oauth2.provider.approval.UserApprovalHandler;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.InMemoryTokenStore;
 
@@ -24,6 +26,9 @@ public class OAuth2SecurityServer extends AuthorizationServerConfigurerAdapter {
 
     @Autowired
     private AuthenticationManager authenticationManager;
+
+    @Autowired
+    private UserApprovalHandler userApprovalHandler;
 
     @Override
     public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
@@ -41,8 +46,14 @@ public class OAuth2SecurityServer extends AuthorizationServerConfigurerAdapter {
                 .scopes("read", "write")
                 .resourceIds("oauth2-resource")
                 .redirectUris("http://localhost:10000/login")
-                .accessTokenValiditySeconds(120)
+                .accessTokenValiditySeconds(1200)
                 .refreshTokenValiditySeconds(240000);
+    }
+
+    @Override
+    public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
+        endpoints.tokenStore(tokenStore).userApprovalHandler(userApprovalHandler)
+                .authenticationManager(authenticationManager);
     }
 
     @Bean
