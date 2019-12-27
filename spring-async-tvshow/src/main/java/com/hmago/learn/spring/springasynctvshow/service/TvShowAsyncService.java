@@ -4,8 +4,6 @@ import com.hmago.learn.spring.springasynctvshow.client.TvShowRestClient;
 import com.hmago.learn.spring.springasynctvshow.pojo.Cast;
 import com.hmago.learn.spring.springasynctvshow.pojo.Episode;
 import com.hmago.learn.spring.springasynctvshow.pojo.Show;
-import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
-import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
@@ -33,7 +31,7 @@ public class TvShowAsyncService {
     }
 
     @Async("asyncExecutor")
-    public CompletableFuture<List<Cast>> getShowsCastById(Long id){
+    public CompletableFuture<List<Cast>> getShowsCastById(Long id) {
         log.info("==Getting cast details");
         List<Cast> casts = tvShowRestClient.getShowsCastById(id);
         log.info("Show Cast completed");
@@ -41,7 +39,7 @@ public class TvShowAsyncService {
     }
 
     @Async("asyncExecutor")
-    public CompletableFuture<List<Episode>> getShowsEpisodesById(Long id){
+    public CompletableFuture<List<Episode>> getShowsEpisodesById(Long id) {
         log.info("==getting episodes==");
         List<Episode> episodes = tvShowRestClient.getShowsEpisodesById(id);
         log.info("==episode done==");

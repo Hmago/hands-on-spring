@@ -38,7 +38,7 @@ public class TvShowRestClient {
         return restTemplate.getForObject(uri, Show.class);
     }
 
-    public Show getShowdetails_fallback(Long id){
+    public Show getShowdetails_fallback(Long id) {
         return new Show();
     }
 
@@ -50,7 +50,7 @@ public class TvShowRestClient {
         return restTemplate.getForObject(uri, List.class);
     }
 
-    public List<Cast> getShowsCastById_fallback(Long id){
+    public List<Cast> getShowsCastById_fallback(Long id) {
         return new ArrayList<>();
     }
 
@@ -62,7 +62,7 @@ public class TvShowRestClient {
         return restTemplate.getForObject(uri, List.class);
     }
 
-    public List<Episode> getShowsEpisodesById_fallback(Long id){
+    public List<Episode> getShowsEpisodesById_fallback(Long id) {
         return new ArrayList<>();
     }
 }
