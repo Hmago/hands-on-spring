@@ -1,4 +1,4 @@
-package com.hmago.learn.spring.annotations;
+package com.hmago.learn.spring.annotations.aspect;
 
 import com.hmago.learn.spring.annotations.annotation.RateLimiter;
 import com.hmago.learn.spring.annotations.exception.RateLimiterException;
