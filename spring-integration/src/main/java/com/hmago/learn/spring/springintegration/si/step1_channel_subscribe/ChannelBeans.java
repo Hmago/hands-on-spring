@@ -1,15 +1,14 @@
-package com.hmago.learn.spring.springintegration.si.channel;
+package com.hmago.learn.spring.springintegration.si.step1_channel_subscribe;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.integration.channel.DirectChannel;
-import org.springframework.messaging.MessageChannel;
 
 @Configuration
-public class MessageChannelConfig {
+public class ChannelBeans {
 
-    @Bean(name="inputChannel")
-    public MessageChannel inputChannel(){
+    @Bean(name = "messageChannel")
+    public DirectChannel messageChannel() {
         return new DirectChannel();
     }
 }
