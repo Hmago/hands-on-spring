@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
 
 @Slf4j
@@ -27,7 +26,7 @@ public class WebRequestLogService {
     }
 
     @Async
-    public void logWebRequest(HttpRequest request, byte[] body, ClientHttpResponse response, Long timeTakenInMs){
+    public void logWebRequest(HttpRequest request, byte[] body, ClientHttpResponse response, Long timeTakenInMs) {
         log.info("== Logging web request");
 
         try {
@@ -42,9 +41,8 @@ public class WebRequestLogService {
                     .build();
             repo.save(requestLog);
         } catch (IOException e) {
-            e.printStackTrace();
+            log.info("Error while logging {}", e.getMessage());
         }
-
 
         log.info("==Logging web request done");
     }
