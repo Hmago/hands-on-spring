@@ -3,11 +3,13 @@ package com.hmago.learn.spring.auditing.model;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.envers.Audited;
 
 import javax.persistence.*;
 
 @Data
 @Entity
+@Audited
 @Table(name = "product")
 @NoArgsConstructor
 public class Product extends BaseAditableAttributes<String> {
