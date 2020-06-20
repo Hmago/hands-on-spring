@@ -13,3 +13,4 @@ The topic I will be covering in this are:
 8. Schedular
 9. JsonPath
 10. RateLimiter annoation using spring Before aspect
+11. Spring data JPA
